@@ -45,6 +45,7 @@ dependencies:
   fab_circular_menu: ^1.0.2
   flutter_speed_dial: ^6.0.0
   rflutter_alert: ^1.0.3
+  qr_code_scanner: ^1.0.1
 
 dev_dependencies:
   flutter_test:
