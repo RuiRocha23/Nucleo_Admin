@@ -124,7 +124,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: SpeedDial(
         icon: Icons.add,
-        iconTheme: IconThemeData(size: 25.0),
+        iconTheme: const IconThemeData(size: 25.0),
         curve: Curves.bounceIn,
         overlayColor: Colors.transparent,
         tooltip: 'Speed dial',
@@ -132,10 +132,10 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
         elevation: 5.0,
-        shape: CircleBorder(),
+        shape: const CircleBorder(),
         children: [
           SpeedDialChild(
-              child: Icon(Icons.construction_outlined),
+              child: const Icon(Icons.construction_outlined),
               backgroundColor: Colors.indigo,
               elevation: 5.0,
               onTap: () {
@@ -146,26 +146,26 @@ class _HomePageState extends State<HomePage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                         scrollable: true,
-                        title: Text('Workshop'),
+                        title: const Text('Workshop'),
                         content: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Form(
                             child: Column(
                               children: <Widget>[
                                 TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Nome',
                                     icon: Icon(Icons.construction_outlined),
                                   ),
                                 ),
                                 TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Data',
                                     icon: Icon(Icons.calendar_month),
                                   ),
                                 ),
                                 TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Info',
                                     icon: Icon(Icons.info),
                                   ),
@@ -178,7 +178,7 @@ class _HomePageState extends State<HomePage> {
                     });
               }),
           SpeedDialChild(
-              child: Icon(Icons.warning_amber_outlined),
+              child: const Icon(Icons.warning_amber_outlined),
               backgroundColor: Colors.indigo,
               elevation: 5.0,
               onTap: () {
@@ -189,26 +189,26 @@ class _HomePageState extends State<HomePage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                         scrollable: true,
-                        title: Text('Aviso'),
+                        title: const Text('Aviso'),
                         content: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Form(
                             child: Column(
                               children: <Widget>[
                                 TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Nome',
                                     icon: Icon(Icons.warning_amber_outlined),
                                   ),
                                 ),
                                 TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Data',
                                     icon: Icon(Icons.calendar_month),
                                   ),
                                 ),
                                 TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Info',
                                     icon: Icon(Icons.info),
                                   ),
@@ -221,7 +221,7 @@ class _HomePageState extends State<HomePage> {
                     });
               }),
           SpeedDialChild(
-              child: Icon(Icons.business_center_rounded),
+              child: const Icon(Icons.business_center_rounded),
               backgroundColor: Colors.indigo,
               elevation: 5.0,
               onTap: () {
@@ -232,26 +232,26 @@ class _HomePageState extends State<HomePage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                         scrollable: true,
-                        title: Text('Kit'),
+                        title: const Text('Kit'),
                         content: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Form(
                             child: Column(
                               children: <Widget>[
                                 TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Nome',
                                     icon: Icon(Icons.business_center_rounded),
                                   ),
                                 ),
                                 TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Data',
                                     icon: Icon(Icons.calendar_month),
                                   ),
                                 ),
                                 TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Info',
                                     icon: Icon(Icons.info),
                                   ),
@@ -264,7 +264,7 @@ class _HomePageState extends State<HomePage> {
                     });
               }),
           SpeedDialChild(
-              child: Icon(Icons.electric_bolt_outlined),
+              child: const Icon(Icons.electric_bolt_outlined),
               backgroundColor: Colors.indigo,
               elevation: 5.0,
               onTap: () {
@@ -275,26 +275,26 @@ class _HomePageState extends State<HomePage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                         scrollable: true,
-                        title: Text('Evento'),
+                        title: const Text('Evento'),
                         content: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Form(
                             child: Column(
                               children: <Widget>[
                                 TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Nome',
                                     icon: Icon(Icons.electric_bolt_outlined),
                                   ),
                                 ),
                                 TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Data',
                                     icon: Icon(Icons.calendar_month),
                                   ),
                                 ),
                                 TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Info',
                                     icon: Icon(Icons.info),
                                   ),
