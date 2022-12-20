@@ -1,11 +1,9 @@
-import 'package:fab_circular_menu/fab_circular_menu.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'Avisos.dart';
 import 'JEE.dart';
 import 'Kits.dart';
 import 'Workshops.dart';
-import 'qr.dart';
+import 'qrMain.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 class HomePage extends StatefulWidget {
@@ -30,18 +28,21 @@ class _HomePageState extends State<HomePage> {
   PageController _pageController = PageController(initialPage: 0);
 
   final _bottomNavigationBarItems = [
-    BottomNavigationBarItem(
-      icon: const Icon(Icons.construction_outlined, color: Colors.white),
+    const BottomNavigationBarItem(
+      icon: Icon(
+        Icons.construction_outlined,
+        color: Colors.white,
+      ),
       label: 'Workshops',
     ),
-    BottomNavigationBarItem(
-        icon: const Icon(Icons.warning_amber_outlined, color: Colors.white),
+    const BottomNavigationBarItem(
+        icon: Icon(Icons.warning_amber_outlined, color: Colors.white),
         label: 'Avisos'),
-    BottomNavigationBarItem(
-        icon: const Icon(Icons.business_center_rounded, color: Colors.white),
+    const BottomNavigationBarItem(
+        icon: Icon(Icons.business_center_rounded, color: Colors.white),
         label: 'Kits'),
-    BottomNavigationBarItem(
-        icon: const Icon(Icons.bolt_rounded, color: Colors.white), label: 'JEE')
+    const BottomNavigationBarItem(
+        icon: Icon(Icons.bolt_rounded, color: Colors.white), label: 'JEE')
   ];
 
   @override
@@ -64,19 +65,23 @@ class _HomePageState extends State<HomePage> {
       ),
       extendBody: true,
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         currentIndex: _currentIndex,
+        selectedItemColor: Colors.indigo,
+        unselectedItemColor: Colors.white,
         items: _bottomNavigationBarItems,
         onTap: (index) {
           setState(() {
             _pageController.animateToPage(index,
-                duration: Duration(milliseconds: 500), curve: Curves.ease);
+                duration: const Duration(milliseconds: 500),
+                curve: Curves.ease);
           });
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: SpeedDial(
         icon: Icons.add,
-        iconTheme: IconThemeData(size: 25.0),
+        iconTheme: const IconThemeData(size: 25.0),
         curve: Curves.bounceIn,
         overlayColor: Colors.transparent,
         tooltip: 'Speed dial',
@@ -84,10 +89,10 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
         elevation: 5.0,
-        shape: CircleBorder(),
+        shape: const CircleBorder(),
         children: [
           SpeedDialChild(
-              child: Icon(Icons.construction_outlined),
+              child: const Icon(Icons.construction_outlined),
               backgroundColor: Colors.indigo,
               elevation: 5.0,
               onTap: () {
@@ -98,26 +103,26 @@ class _HomePageState extends State<HomePage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                         scrollable: true,
-                        title: Text('Workshop'),
+                        title: const Text('Workshop'),
                         content: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Form(
                             child: Column(
                               children: <Widget>[
                                 TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Nome',
                                     icon: Icon(Icons.construction_outlined),
                                   ),
                                 ),
                                 TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Data',
                                     icon: Icon(Icons.calendar_month),
                                   ),
                                 ),
                                 TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Info',
                                     icon: Icon(Icons.info),
                                   ),
@@ -137,7 +142,7 @@ class _HomePageState extends State<HomePage> {
                     });
               }),
           SpeedDialChild(
-              child: Icon(Icons.warning_amber_outlined),
+              child: const Icon(Icons.warning_amber_outlined),
               backgroundColor: Colors.indigo,
               elevation: 5.0,
               onTap: () {
@@ -148,26 +153,26 @@ class _HomePageState extends State<HomePage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                         scrollable: true,
-                        title: Text('Aviso'),
+                        title: const Text('Aviso'),
                         content: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Form(
                             child: Column(
                               children: <Widget>[
                                 TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Nome',
                                     icon: Icon(Icons.warning_amber_outlined),
                                   ),
                                 ),
                                 TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Data',
                                     icon: Icon(Icons.calendar_month),
                                   ),
                                 ),
                                 TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Info',
                                     icon: Icon(Icons.info),
                                   ),
@@ -187,7 +192,7 @@ class _HomePageState extends State<HomePage> {
                     });
               }),
           SpeedDialChild(
-              child: Icon(Icons.business_center_rounded),
+              child: const Icon(Icons.business_center_rounded),
               backgroundColor: Colors.indigo,
               elevation: 5.0,
               onTap: () {
@@ -198,26 +203,26 @@ class _HomePageState extends State<HomePage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                         scrollable: true,
-                        title: Text('Kit'),
+                        title: const Text('Kit'),
                         content: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Form(
                             child: Column(
                               children: <Widget>[
                                 TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Nome',
                                     icon: Icon(Icons.business_center_rounded),
                                   ),
                                 ),
                                 TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Data',
                                     icon: Icon(Icons.calendar_month),
                                   ),
                                 ),
                                 TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Info',
                                     icon: Icon(Icons.info),
                                   ),
@@ -237,7 +242,7 @@ class _HomePageState extends State<HomePage> {
                     });
               }),
           SpeedDialChild(
-              child: Icon(Icons.bolt_rounded),
+              child: const Icon(Icons.bolt_rounded),
               backgroundColor: Colors.indigo,
               elevation: 5.0,
               onTap: () {
@@ -248,26 +253,26 @@ class _HomePageState extends State<HomePage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                         scrollable: true,
-                        title: Text('Evento'),
+                        title: const Text('Evento'),
                         content: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Form(
                             child: Column(
                               children: <Widget>[
                                 TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Nome',
-                                    icon: Icon(Icons.electric_bolt_outlined),
+                                    icon: Icon(Icons.bolt_rounded),
                                   ),
                                 ),
                                 TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Data',
                                     icon: Icon(Icons.calendar_month),
                                   ),
                                 ),
                                 TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Info',
                                     icon: Icon(Icons.info),
                                   ),
@@ -286,6 +291,13 @@ class _HomePageState extends State<HomePage> {
                       );
                     });
               }),
+          SpeedDialChild(
+              child: const Icon(Icons.qr_code_scanner_rounded),
+              backgroundColor: Colors.indigo,
+              elevation: 5.0,
+              onTap: () {
+                GotoQrReader();
+              })
         ],
       ),
     );
