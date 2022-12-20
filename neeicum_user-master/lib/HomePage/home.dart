@@ -53,78 +53,59 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  int _selectedIndex = 0;
+  int _currentIndex = 0;
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  PageController _pageController = PageController(initialPage: 0);
+
+  final _bottomNavigationBarItems = [
+    BottomNavigationBarItem(
+      icon: const Icon(Icons.construction_outlined, color: Colors.white),
+      label: 'Workshops',
+    ),
+    BottomNavigationBarItem(
+        icon: const Icon(Icons.warning_amber_outlined, color: Colors.white),
+        label: 'Avisos'),
+    BottomNavigationBarItem(
+        icon: const Icon(Icons.business_center_rounded, color: Colors.white),
+        label: 'Kits'),
+    BottomNavigationBarItem(
+        icon: const Icon(Icons.electric_bolt_outlined, color: Colors.white),
+        label: 'JEE')
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[900],
-      appBar: AppBar(
-        actions: [
-          IconButton(
-              onPressed: GotoQrReader, icon: const Icon(Icons.qr_code_scanner)),
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: (newIndex) {
+          setState(() {
+            _currentIndex = newIndex;
+          });
+        },
+        children: [
+          WorkshopsPage(),
+          AvisosPage(),
+          KitsPage(),
+          JEEPage(),
         ],
-        title: Padding(
-          padding: const EdgeInsets.all(0.0),
-          child: Row(
-            children: [
-              Image.asset(
-                logoCurso,
-                scale: 50,
-              ),
-              const SizedBox(
-                width: 5,
-              ),
-              const Text(
-                'NEEEICUM',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-        ),
-        //backgroundColor: Colors.indigo,
       ),
-      body: const Center(),
       extendBody: true,
-      bottomNavigationBar: BottomAppBar(
-          shape: const CircularNotchedRectangle(),
-          color: Colors.grey[800],
-          child: IconTheme(
-              data:
-                  IconThemeData(color: Theme.of(context).colorScheme.onPrimary),
-              child: Padding(
-                  padding: const EdgeInsets.all(7.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      IconButton(
-                          onPressed: GoToWorkshops,
-                          icon: const Icon(Icons.construction_outlined)),
-                      IconButton(
-                          onPressed: GoToAvisos,
-                          icon: const Icon(Icons.warning_amber_outlined)),
-                      const SizedBox(width: 24),
-                      IconButton(
-                          onPressed: GoToKits,
-                          icon: const Icon(Icons.business_center_rounded)),
-                      IconButton(
-                          onPressed: GoToJEE,
-                          icon: const Icon(Icons.electric_bolt_outlined)),
-                    ],
-                  )))),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        items: _bottomNavigationBarItems,
+        onTap: (index) {
+          setState(() {
+            _pageController.animateToPage(index,
+                duration: Duration(milliseconds: 500), curve: Curves.ease);
+          });
+        },
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: SpeedDial(
         icon: Icons.add,
-        iconTheme: const IconThemeData(size: 25.0),
+        iconTheme: IconThemeData(size: 25.0),
         curve: Curves.bounceIn,
         overlayColor: Colors.transparent,
         tooltip: 'Speed dial',
@@ -132,10 +113,10 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
         elevation: 5.0,
-        shape: const CircleBorder(),
+        shape: CircleBorder(),
         children: [
           SpeedDialChild(
-              child: const Icon(Icons.construction_outlined),
+              child: Icon(Icons.construction_outlined),
               backgroundColor: Colors.indigo,
               elevation: 5.0,
               onTap: () {
@@ -146,26 +127,26 @@ class _HomePageState extends State<HomePage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                         scrollable: true,
-                        title: const Text('Workshop'),
+                        title: Text('Workshop'),
                         content: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Form(
                             child: Column(
                               children: <Widget>[
                                 TextFormField(
-                                  decoration: const InputDecoration(
+                                  decoration: InputDecoration(
                                     labelText: 'Nome',
                                     icon: Icon(Icons.construction_outlined),
                                   ),
                                 ),
                                 TextFormField(
-                                  decoration: const InputDecoration(
+                                  decoration: InputDecoration(
                                     labelText: 'Data',
                                     icon: Icon(Icons.calendar_month),
                                   ),
                                 ),
                                 TextFormField(
-                                  decoration: const InputDecoration(
+                                  decoration: InputDecoration(
                                     labelText: 'Info',
                                     icon: Icon(Icons.info),
                                   ),
@@ -178,7 +159,7 @@ class _HomePageState extends State<HomePage> {
                     });
               }),
           SpeedDialChild(
-              child: const Icon(Icons.warning_amber_outlined),
+              child: Icon(Icons.warning_amber_outlined),
               backgroundColor: Colors.indigo,
               elevation: 5.0,
               onTap: () {
@@ -189,26 +170,26 @@ class _HomePageState extends State<HomePage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                         scrollable: true,
-                        title: const Text('Aviso'),
+                        title: Text('Aviso'),
                         content: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Form(
                             child: Column(
                               children: <Widget>[
                                 TextFormField(
-                                  decoration: const InputDecoration(
+                                  decoration: InputDecoration(
                                     labelText: 'Nome',
                                     icon: Icon(Icons.warning_amber_outlined),
                                   ),
                                 ),
                                 TextFormField(
-                                  decoration: const InputDecoration(
+                                  decoration: InputDecoration(
                                     labelText: 'Data',
                                     icon: Icon(Icons.calendar_month),
                                   ),
                                 ),
                                 TextFormField(
-                                  decoration: const InputDecoration(
+                                  decoration: InputDecoration(
                                     labelText: 'Info',
                                     icon: Icon(Icons.info),
                                   ),
@@ -221,7 +202,7 @@ class _HomePageState extends State<HomePage> {
                     });
               }),
           SpeedDialChild(
-              child: const Icon(Icons.business_center_rounded),
+              child: Icon(Icons.business_center_rounded),
               backgroundColor: Colors.indigo,
               elevation: 5.0,
               onTap: () {
@@ -232,26 +213,26 @@ class _HomePageState extends State<HomePage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                         scrollable: true,
-                        title: const Text('Kit'),
+                        title: Text('Kit'),
                         content: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Form(
                             child: Column(
                               children: <Widget>[
                                 TextFormField(
-                                  decoration: const InputDecoration(
+                                  decoration: InputDecoration(
                                     labelText: 'Nome',
                                     icon: Icon(Icons.business_center_rounded),
                                   ),
                                 ),
                                 TextFormField(
-                                  decoration: const InputDecoration(
+                                  decoration: InputDecoration(
                                     labelText: 'Data',
                                     icon: Icon(Icons.calendar_month),
                                   ),
                                 ),
                                 TextFormField(
-                                  decoration: const InputDecoration(
+                                  decoration: InputDecoration(
                                     labelText: 'Info',
                                     icon: Icon(Icons.info),
                                   ),
@@ -264,7 +245,7 @@ class _HomePageState extends State<HomePage> {
                     });
               }),
           SpeedDialChild(
-              child: const Icon(Icons.electric_bolt_outlined),
+              child: Icon(Icons.electric_bolt_outlined),
               backgroundColor: Colors.indigo,
               elevation: 5.0,
               onTap: () {
@@ -275,26 +256,26 @@ class _HomePageState extends State<HomePage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                         scrollable: true,
-                        title: const Text('Evento'),
+                        title: Text('Evento'),
                         content: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Form(
                             child: Column(
                               children: <Widget>[
                                 TextFormField(
-                                  decoration: const InputDecoration(
+                                  decoration: InputDecoration(
                                     labelText: 'Nome',
                                     icon: Icon(Icons.electric_bolt_outlined),
                                   ),
                                 ),
                                 TextFormField(
-                                  decoration: const InputDecoration(
+                                  decoration: InputDecoration(
                                     labelText: 'Data',
                                     icon: Icon(Icons.calendar_month),
                                   ),
                                 ),
                                 TextFormField(
-                                  decoration: const InputDecoration(
+                                  decoration: InputDecoration(
                                     labelText: 'Info',
                                     icon: Icon(Icons.info),
                                   ),
