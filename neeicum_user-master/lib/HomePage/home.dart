@@ -25,34 +25,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void GoToJEE() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const JEEPage()),
-    );
-  }
-
-  void GoToAvisos() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const AvisosPage()),
-    );
-  }
-
-  void GoToWorkshops() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const WorkshopsPage()),
-    );
-  }
-
-  void GoToKits() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const KitsPage()),
-    );
-  }
-
   int _currentIndex = 0;
 
   PageController _pageController = PageController(initialPage: 0);
@@ -69,8 +41,7 @@ class _HomePageState extends State<HomePage> {
         icon: const Icon(Icons.business_center_rounded, color: Colors.white),
         label: 'Kits'),
     BottomNavigationBarItem(
-        icon: const Icon(Icons.electric_bolt_outlined, color: Colors.white),
-        label: 'JEE')
+        icon: const Icon(Icons.bolt_rounded, color: Colors.white), label: 'JEE')
   ];
 
   @override
@@ -155,6 +126,13 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         ),
+                        actions: <Widget>[
+                          FloatingActionButton(
+                            backgroundColor: Colors.indigo,
+                            onPressed: () {},
+                            child: const Icon(Icons.add, color: Colors.white),
+                          )
+                        ],
                       );
                     });
               }),
@@ -198,6 +176,13 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         ),
+                        actions: <Widget>[
+                          FloatingActionButton(
+                            backgroundColor: Colors.indigo,
+                            onPressed: () {},
+                            child: const Icon(Icons.add, color: Colors.white),
+                          )
+                        ],
                       );
                     });
               }),
@@ -241,11 +226,18 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         ),
+                        actions: <Widget>[
+                          FloatingActionButton(
+                            backgroundColor: Colors.indigo,
+                            onPressed: () {},
+                            child: const Icon(Icons.add, color: Colors.white),
+                          )
+                        ],
                       );
                     });
               }),
           SpeedDialChild(
-              child: Icon(Icons.electric_bolt_outlined),
+              child: Icon(Icons.bolt_rounded),
               backgroundColor: Colors.indigo,
               elevation: 5.0,
               onTap: () {
@@ -284,7 +276,13 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         ),
-                        //adicionar botao
+                        actions: <Widget>[
+                          FloatingActionButton(
+                            backgroundColor: Colors.indigo,
+                            onPressed: () {},
+                            child: const Icon(Icons.add, color: Colors.white),
+                          )
+                        ],
                       );
                     });
               }),
