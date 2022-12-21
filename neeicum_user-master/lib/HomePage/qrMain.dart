@@ -7,6 +7,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/rendering.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 class QrPage extends StatefulWidget {
   const QrPage({super.key});
@@ -34,7 +35,7 @@ class _QrPageState extends State<QrPage> {
                 onPressed: () async {
                   await controller?.resumeCamera();
                 },
-                icon: const Icon(Icons.qr_code_scanner)),
+                icon: const Icon(Icons.qr_code_scanner_rounded)),
             const SizedBox(width: 10),
           ],
           title: Padding(
@@ -118,20 +119,44 @@ class _QrPageState extends State<QrPage> {
           ],
         ),
         actions: <Widget>[
-          FloatingActionButton(
+          SpeedDial(
+            icon: Icons.add,
+            iconTheme: const IconThemeData(size: 25.0),
+            curve: Curves.bounceIn,
+            overlayColor: Colors.transparent,
+            tooltip: 'Speed dial',
+            heroTag: 'speed-dial-hero-tag',
             backgroundColor: Colors.indigo,
-            onPressed: () {
-              //pagar cotas
-            },
-            child: const Icon(Icons.attach_money_rounded, color: Colors.white),
-          ),
-          FloatingActionButton(
-            backgroundColor: Colors.indigo,
-            onPressed: () {
-              //despagar cotas
-            },
-            child:
-                const Icon(Icons.money_off_csred_rounded, color: Colors.white),
+            foregroundColor: Colors.white,
+            elevation: 5.0,
+            shape: const CircleBorder(),
+            direction: SpeedDialDirection.left,
+            children: [
+              SpeedDialChild(
+                child: const Icon(Icons.money_off_rounded),
+                backgroundColor: Colors.indigo,
+                elevation: 0.5,
+                onTap: () {},
+              ),
+              SpeedDialChild(
+                child: const Icon(Icons.attach_money_rounded),
+                backgroundColor: Colors.indigo,
+                elevation: 0.5,
+                onTap: () {},
+              ),
+              SpeedDialChild(
+                child: const Icon(Icons.bolt_rounded),
+                backgroundColor: Colors.indigo,
+                elevation: 0.5,
+                onTap: () {},
+              ),
+              SpeedDialChild(
+                child: const Icon(Icons.construction_rounded),
+                backgroundColor: Colors.indigo,
+                elevation: 0.5,
+                onTap: () {},
+              ),
+            ],
           ),
         ],
       );

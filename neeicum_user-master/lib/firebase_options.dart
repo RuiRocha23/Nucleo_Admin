@@ -17,13 +17,19 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -46,38 +52,12 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAtq9lgvFolDYTmWJgPK6SsD08vUH4eKdM',
-    appId: '1:466569446594:web:c298f1d1b7b4570146a75b',
-    messagingSenderId: '466569446594',
-    projectId: 'app-neeicum',
-    authDomain: 'app-neeicum.firebaseapp.com',
-    databaseURL:
-        'https://app-neeicum-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'app-neeicum.appspot.com',
-    measurementId: 'G-MZ4WXM0Z0C',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAwrOeB8o_psr_jEcC2HEsJTsAmLXs304E',
-    appId: '1:466569446594:android:e41984ec538e41b746a75b',
+    appId: '1:466569446594:android:17dda5b79dc6141e46a75b',
     messagingSenderId: '466569446594',
     projectId: 'app-neeicum',
-    databaseURL:
-        'https://app-neeicum-default-rtdb.europe-west1.firebasedatabase.app',
+    databaseURL: 'https://app-neeicum-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'app-neeicum.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAs8W7UTvN8O5oKfSXID-zbF14EoKwYcvY',
-    appId: '1:466569446594:ios:614847fbee6428a246a75b',
-    messagingSenderId: '466569446594',
-    projectId: 'app-neeicum',
-    databaseURL:
-        'https://app-neeicum-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'app-neeicum.appspot.com',
-    iosClientId:
-        '466569446594-07sq8upu7ldtsed405p1o17ac7pqkvvu.apps.googleusercontent.com',
-    iosBundleId: 'com.example.neeicum',
   );
 }

@@ -19,13 +19,13 @@ class _AvisosPageState extends State<AvisosPage> {
       appBar: AppBar(
         actions: [
           IconButton(
-              onPressed: null, icon: const Icon(Icons.warning_amber_outlined)),
+              onPressed: null, icon: const Icon(Icons.warning_amber_rounded)),
         ],
         title: Padding(
           padding: const EdgeInsets.all(0.0),
           child: Row(
             children: [
-              Icon(Icons.warning_amber_outlined, size: 30),
+              Icon(Icons.warning_amber_rounded, size: 30),
               const SizedBox(
                 width: 5,
               ),
