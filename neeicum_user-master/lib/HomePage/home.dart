@@ -27,6 +27,12 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  void _onDataReceived(String _name, String _data, String _info) {
+    name = _name;
+    data = _data;
+    info = _info;
+  }
+
   int _currentIndex = 0;
 
   PageController _pageController = PageController(initialPage: 0);
@@ -51,6 +57,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    _onDataReceived(_name.text, _data.text, _info.text);
     return Scaffold(
       backgroundColor: Colors.grey[900],
       body: PageView(
@@ -142,11 +149,13 @@ class _HomePageState extends State<HomePage> {
                           FloatingActionButton(
                             backgroundColor: Colors.indigo,
                             onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => WorkshopsPage(
-                                      name: _name.text,
-                                      data: _data.text,
-                                      info: _info.text)));
+                              _onDataReceived(
+                                  _name.text, _data.text, _info.text);
+                              setState(() {
+                                name = _name.text;
+                                data = _data.text;
+                                info = _info.text;
+                              });
                             },
                             child: const Icon(Icons.arrow_forward_ios,
                                 color: Colors.white),
