@@ -27,12 +27,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _onDataReceived(String _name, String _data, String _info) {
-    name = _name;
-    data = _data;
-    info = _info;
-  }
-
   int _currentIndex = 0;
 
   PageController _pageController = PageController(initialPage: 0);
@@ -57,7 +51,11 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    _onDataReceived(_name.text, _data.text, _info.text);
+    void _onDataReceived(String _name, String _data, String _info) {
+    name = _name;
+    data = _data;
+    info = _info;
+    }
     return Scaffold(
       backgroundColor: Colors.grey[900],
       body: PageView(
