@@ -14,7 +14,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String name = "", data = "", info = "";
   String logoCurso = "assets/images/logo_w.png";
+  TextEditingController _name = new TextEditingController();
+  TextEditingController _data = new TextEditingController();
+  TextEditingController _info = new TextEditingController();
 
   void GotoQrReader() {
     Navigator.push(
@@ -57,7 +61,7 @@ class _HomePageState extends State<HomePage> {
           });
         },
         children: [
-          WorkshopsPage(),
+          WorkshopsPage(name: name, data: data, info: info),
           AvisosPage(),
           KitsPage(),
           JEEPage(),
@@ -110,18 +114,21 @@ class _HomePageState extends State<HomePage> {
                             child: Column(
                               children: <Widget>[
                                 TextFormField(
+                                  controller: _name,
                                   decoration: const InputDecoration(
                                     labelText: 'Nome',
                                     icon: Icon(Icons.construction_outlined),
                                   ),
                                 ),
                                 TextFormField(
+                                  controller: _data,
                                   decoration: const InputDecoration(
                                     labelText: 'Data',
                                     icon: Icon(Icons.calendar_month),
                                   ),
                                 ),
                                 TextFormField(
+                                  controller: _info,
                                   decoration: const InputDecoration(
                                     labelText: 'Info',
                                     icon: Icon(Icons.info),
@@ -134,8 +141,15 @@ class _HomePageState extends State<HomePage> {
                         actions: <Widget>[
                           FloatingActionButton(
                             backgroundColor: Colors.indigo,
-                            onPressed: () {},
-                            child: const Icon(Icons.add, color: Colors.white),
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => WorkshopsPage(
+                                      name: _name.text,
+                                      data: _data.text,
+                                      info: _info.text)));
+                            },
+                            child: const Icon(Icons.arrow_forward_ios,
+                                color: Colors.white),
                           )
                         ],
                       );
@@ -185,7 +199,8 @@ class _HomePageState extends State<HomePage> {
                           FloatingActionButton(
                             backgroundColor: Colors.indigo,
                             onPressed: () {},
-                            child: const Icon(Icons.add, color: Colors.white),
+                            child: const Icon(Icons.arrow_forward_ios,
+                                color: Colors.white),
                           )
                         ],
                       );
@@ -235,7 +250,8 @@ class _HomePageState extends State<HomePage> {
                           FloatingActionButton(
                             backgroundColor: Colors.indigo,
                             onPressed: () {},
-                            child: const Icon(Icons.add, color: Colors.white),
+                            child: const Icon(Icons.arrow_forward_ios,
+                                color: Colors.white),
                           )
                         ],
                       );
@@ -285,7 +301,8 @@ class _HomePageState extends State<HomePage> {
                           FloatingActionButton(
                             backgroundColor: Colors.indigo,
                             onPressed: () {},
-                            child: const Icon(Icons.add, color: Colors.white),
+                            child: const Icon(Icons.arrow_forward_ios,
+                                color: Colors.white),
                           )
                         ],
                       );
