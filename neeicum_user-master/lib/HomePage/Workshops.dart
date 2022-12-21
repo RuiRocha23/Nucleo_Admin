@@ -4,13 +4,17 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class WorkshopsPage extends StatefulWidget {
-  const WorkshopsPage({super.key});
+  String name, data, info;
+  WorkshopsPage(
+      {required this.name, required this.data, required this.info, super.key});
 
   @override
-  State<WorkshopsPage> createState() => _WorkshopsPageState();
+  State<WorkshopsPage> createState() => _WorkshopsPageState(name, data, info);
 }
 
 class _WorkshopsPageState extends State<WorkshopsPage> {
+  String name, data, info;
+  _WorkshopsPageState(this.name, this.data, this.info);
   String logoCurso = "assets/images/logo_w.png";
   @override
   Widget build(BuildContext context) {
@@ -41,6 +45,15 @@ class _WorkshopsPageState extends State<WorkshopsPage> {
         ),
         //backgroundColor: Colors.indigo,
       ),
+      body: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('Nome: ${name}'),
+          Text('Data: ${data}'),
+          Text('Info: ${info}')
+        ],
+      )),
     );
   }
 }
